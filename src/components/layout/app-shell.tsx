@@ -4,6 +4,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import NovaCoachWidget from "@/components/coach/nova-coach-widget";
+
 import {
   LayoutDashboard,
   FolderKanban,
@@ -169,6 +171,8 @@ export default function AppShell({
 
         <section className="page-content">{children}</section>
       </main>
+      
+       <NovaCoachWidget />
 
       {mobileOpen && (
         <button
