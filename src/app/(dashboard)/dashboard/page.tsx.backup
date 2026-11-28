@@ -1,0 +1,73 @@
+import {
+  FolderKanban,
+  CheckCircle2,
+  Clock3,
+  Wallet,
+} from "lucide-react";
+
+const stats = [
+  {
+    label: "Projets actifs",
+    value: "00",
+    icon: FolderKanban,
+  },
+  {
+    label: "Tâches terminées",
+    value: "00",
+    icon: CheckCircle2,
+  },
+  {
+    label: "Heures de travail",
+    value: "00h",
+    icon: Clock3,
+  },
+  {
+    label: "Budget engagé",
+    value: "0 FCFA",
+    icon: Wallet,
+  },
+];
+
+export default function DashboardPage() {
+  return (
+    <div className="dashboard">
+      <div className="page-heading">
+        <div>
+          <span className="eyebrow">VOTRE ESPACE DE PILOTAGE</span>
+          <h1>Vue d'ensemble</h1>
+          <p>Prenez le contrôle de vos objectifs et de vos activités.</p>
+        </div>
+        <span className="status-indicator">Système opérationnel</span>
+      </div>
+
+      <div className="stats-grid">
+        {stats.map(({ label, value, icon: Icon }) => (
+          <article className="stat-card" key={label}>
+            <div className="stat-icon">
+              <Icon size={21} />
+            </div>
+            <p>{label}</p>
+            <h2>{value}</h2>
+          </article>
+        ))}
+      </div>
+
+      <div className="dashboard-grid">
+        <section className="panel main-panel">
+          <h2>Mes projets</h2>
+          <p>Aucun projet enregistré pour le moment.</p>
+        </section>
+
+        <section className="panel">
+          <h2>Mes priorités</h2>
+          <p>Vos tâches prioritaires apparaîtront ici.</p>
+        </section>
+
+        <section className="panel">
+          <h2>NovaCoach</h2>
+          <p>Votre espace d'accompagnement intelligent.</p>
+        </section>
+      </div>
+    </div>
+  );
+}
