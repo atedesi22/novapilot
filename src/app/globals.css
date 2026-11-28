@@ -1526,3 +1526,108 @@ a:focus-visible {
     max-height: calc(100dvh - 125px);
   }
 }
+
+
+/* =========================================
+   NOVAPILOT — GALACTIC ANIMATED BACKGROUND
+========================================= */
+
+.app-shell {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(
+      ellipse at 15% 15%,
+      rgba(40, 75, 160, 0.16),
+      transparent 42%
+    ),
+    radial-gradient(
+      ellipse at 85% 75%,
+      rgba(112, 45, 180, 0.14),
+      transparent 45%
+    ),
+    #050817;
+}
+
+/* Couche de nébuleuses lumineuses */
+
+.app-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(35, 105, 220, 0.15),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 75% 25%,
+      rgba(120, 55, 210, 0.13),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 55% 85%,
+      rgba(0, 190, 220, 0.09),
+      transparent 32%
+    );
+
+  filter: blur(35px);
+  animation: nova-nebula-drift 18s ease-in-out infinite alternate;
+}
+
+/* Couche d'étoiles et de particules */
+
+.app-shell::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background-image:
+    radial-gradient(2px 2px at 12% 22%, rgba(255,255,255,.8) 50%, transparent 100%),
+    radial-gradient(1px 1px at 28% 75%, rgba(130,190,255,.8) 50%, transparent 100%),
+    radial-gradient(2px 2px at 45% 15%, rgba(255,255,255,.7) 50%, transparent 100%),
+    radial-gradient(1px 1px at 67% 42%, rgba(120,190,255,.8) 50%, transparent 100%),
+    radial-gradient(2px 2px at 83% 68%, rgba(255,255,255,.7) 50%, transparent 100%),
+    radial-gradient(1px 1px at 92% 18%, rgba(180,150,255,.9) 50%, transparent 100%);
+
+  background-size: 420px 420px;
+  opacity: 0.45;
+  animation: nova-stars-twinkle 7s ease-in-out infinite alternate;
+}
+
+/* Animations */
+
+@keyframes nova-nebula-drift {
+  from {
+    transform: scale(1) translate3d(-1%, 0, 0);
+  }
+
+  to {
+    transform: scale(1.12) translate3d(1%, 1%, 0);
+  }
+}
+
+@keyframes nova-stars-twinkle {
+  from {
+    opacity: 0.25;
+  }
+
+  to {
+    opacity: 0.65;
+  }
+}
+
+/* Respect des préférences d'accessibilité */
+
+@media (prefers-reduced-motion: reduce) {
+  .app-shell::before,
+  .app-shell::after {
+    animation: none;
+  }
+}
